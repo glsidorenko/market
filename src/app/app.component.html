@@ -1,0 +1,45 @@
+<main>
+  <header class="header">
+    <div class="container">
+      <div class="div_auth">
+        <div class="inner">
+          <div>Wishlist</div>
+          <div>Items</div>
+          <button class="btn">Sign In</button>
+        </div>
+      </div>
+      <div class="div_nav">
+        <img class="nav_logo" src="/assets/logo.svg">
+        <div class="menu">Меню
+          <a routerLink="/main-page">Главная</a>
+          <a routerLink="/catalogue">Каталог</a>
+        </div>
+        <a routerLink="/cart">
+          <div class="cart">
+            <img class="shopping-cart" src="/assets/shopping-cart.svg">
+            <span id="cart_quantity">{{cartQuantity()}}</span>
+          </div>
+        </a>
+      </div>
+      <div class="div_search">
+        <div>вывы</div>
+        <input type="text" placeholder="Поиск" class="search">
+      </div>
+    </div>
+  </header>
+  <div class="outer-container">
+    <router-outlet/>
+  </div>
+  <footer class="footer">
+    <div class="footer_info">
+      <div class="footer_info_container">Информация</div>
+      <div class="footer_info_container">Информация</div>
+      <div class="footer_info_container">Информация</div>
+    </div>
+    <div class="footer_tagname">
+      Created by Gleb
+    </div>
+  </footer>
+</main>
+
+

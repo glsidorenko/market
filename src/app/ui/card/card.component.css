@@ -1,0 +1,92 @@
+.list_item {
+    /* gap: 5px; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    align-items: center;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, .1);
+    border-radius: 16px;
+    position: relative;
+}
+
+.product_category {
+    font-weight: 500;
+    color: rgba(0, 0, 0, .4);
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.product_title {
+    margin-bottom: 8px;
+}
+
+.product_photo {
+    height: 220px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.prices {
+    display: flex;
+    color: black;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    /* gap: 10px; */
+}
+
+.sale_price {
+    /* color: red; */
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.price {
+    /* margin-left: 10px; */
+}
+
+.underlined {
+    text-decoration: line-through;
+}
+
+
+
+.sale {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    /* top: 50px; */
+    /* left: 50%; */
+    width: 35px;
+    height: 35px;
+    top: 22px;
+    right: 23px;
+    border-radius: 100%;
+    background-color: rgba(248, 102, 48, 1);
+}
+
+.sale svg {
+    width: 25px;
+    height: 25px;
+    fill: white;
+}
+
+.add_btn {
+    border: 1px solid rgba(248,102, 48, 1);
+    background-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    color: rgba(248, 102, 48, 1);
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 300ms linear;
+}
+
+.add_btn:hover {
+    color: #fff;
+    border: 1px solid rgba(248, 102, 48, 1);
+    background-color: rgba(248, 102, 48, 1);
+}

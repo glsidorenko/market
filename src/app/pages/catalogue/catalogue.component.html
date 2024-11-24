@@ -1,0 +1,31 @@
+<section class="container">
+    <div class="middle">
+        <div class="list_items">
+            @for(product of visibleItems(); track product.id) {
+            <app-card [card]="product"></app-card>
+            }
+        </div>
+        <div class="filter"></div>
+    </div>
+    <div class="pagination">
+        <button class="arrow_prev" [disabled]="isFirstPage()" (click)="previousPage()">
+            <svg viewBox="0 0 5 9">
+                <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z" />
+            </svg>
+        </button>
+        <div class="pagination_dots">
+            @if(pageCount() > 2) {
+                @for(page of pageCount() | numberToArray; track page) {
+                    <button (click)="updateCurrentPage(page)">{{page}}</button>
+                }
+            }
+        </div>
+        <button class="arrow_next" [disabled]="isLastPage()" (click)="nextPage()">
+            <svg viewBox="0 0 5 9">
+                <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- <app-pagination/> -->
+</section>

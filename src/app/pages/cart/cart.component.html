@@ -1,0 +1,75 @@
+<style>
+    .container {
+        /* max-width: 1200px; */
+        width: 100%;
+        max-width: 1200px;
+        /* margin: auto; */
+        background-color: aqua;
+    }
+    div {
+        outline: 2px solid red;
+    }
+
+    button {
+        padding: 5px 10px;
+    }
+
+    .cart {
+        display: flex;
+    }
+
+    .about {
+        margin-left: 20px;
+    }
+
+    .image img {
+        width: 120px
+    }
+
+    .btns {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+
+
+</style>
+<ng-container class="container">
+    @for(cartItem of cart(); track cartItem.id) {
+        <div class="cart">
+            
+            <div class="image">
+                <img [src]="cartItem.photoUrl" alt="Product Photo">
+            </div>
+            <div class="about">
+                <div>{{cartItem.category}}</div>
+                <div>{{cartItem.title}}</div>
+                <div>{{cartItem.description}}</div>
+            </div>
+            <div class="btns">
+                <button (click)="deleteItem(cartItem)">-</button>
+                <div>{{cartItem.count}}</div>
+                <button (click)="addItem(cartItem, 'add')">+</button>
+            </div>
+            @if(cartItem.salePrice) {
+                <div>{{cartItem.salePrice}}</div>
+
+            } @else {
+                <div>{{cartItem.price}}</div>
+            }
+        </div>
+    }
+
+    @empty {
+        <div>Корзина пуста</div>
+    }
+    @if(cartTotalPrice() !== 0) {
+        <div>Цена: {{cartTotalPrice()}}</div>
+    } 
+    <button>Оформить заказ</button>
+</ng-container>
+
+

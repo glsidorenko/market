@@ -1,11 +1,18 @@
+
 <section class="container">
     <div class="middle">
+        <div class="div_search">
+            <input type="text" placeholder="Поиск" class="search" [formControl]="searchProduct">
+            <div class="filter">7</div>
+        </div>
         <div class="list_items">
-            @for(product of visibleItems(); track product.id) {
-            <app-card [card]="product"></app-card>
+            @for(product of itemsToShow(); track product.id) {
+                <app-card [card]="product"></app-card>
+            }
+            @empty {
+                <div>nothing!</div>
             }
         </div>
-        <div class="filter"></div>
     </div>
     <div class="pagination">
         <button class="arrow_prev" [disabled]="isFirstPage()" (click)="previousPage()">

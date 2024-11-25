@@ -8,8 +8,31 @@
 .middle {
     width: 1200px;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
     padding-top: 60px;
+}
+
+.div_search {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.search {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, .1);
+    transition: border .3s;
+}
+
+.search:focus {
+    border: 2px solid rgba(248, 102, 48, 1);
+
+}
+
+.search:active {
+    /* outline: 2px solid saddlebrown; */
+    border: 2px solid rgba(248, 102, 48, 1);
 }
 
 .list {
@@ -22,9 +45,11 @@
 
 .list_items {
     gap: 20px;
-    width: 850px;
+    /* width: 850px; */
     display: flex;
     flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
     /* margin-top: 80px; */
 }
 

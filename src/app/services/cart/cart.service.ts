@@ -45,7 +45,6 @@ export class CartService {
   deleteItemFromCart(product: CartItem): void {
     this.cart.update((cart) => {
       return cart.filter((item) => {
-        // this.decreaseCounterByValue(item.count);
         if (item.id === product.id) {
           return;
         }

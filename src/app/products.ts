@@ -5,7 +5,7 @@ export const products: Product[] = [
         id: 1,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress1",
+        title: "Urban Edge Hoodie",
         description: "",
         salePrice: 280,
         price: 390
@@ -14,7 +14,7 @@ export const products: Product[] = [
         id: 2,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress2",
+        title: "Midnight Drift Pullover",
         description: "",
         salePrice: null,
         price: 370
@@ -23,7 +23,7 @@ export const products: Product[] = [
         id: 3,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress3",
+        title: "Nomad Luxe Hoodie",
         description: "",
         salePrice: null,
         price: 360
@@ -32,7 +32,7 @@ export const products: Product[] = [
         id: 4,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress4",
+        title: "Stealth Mode Sweatshirt",
         description: "",
         salePrice: 330,
         price: 390
@@ -41,7 +41,7 @@ export const products: Product[] = [
         id: 5,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress5",
+        title: "Rebel Spirit Hoodie",
         description: "",
         salePrice: null,
         price: 395
@@ -50,7 +50,7 @@ export const products: Product[] = [
         id: 6,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress6",
+        title: "Blackout Tech Pullover",
         description: "",
         salePrice: null,
         price: 420
@@ -59,7 +59,7 @@ export const products: Product[] = [
         id: 7,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress7",
+        title: "Coastline Comfort Hoodie",
         description: "",
         salePrice: null,
         price: 390
@@ -68,7 +68,7 @@ export const products: Product[] = [
         id: 8,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress8",
+        title: "Vanguard Vintage Hoodie",
         description: "",
         salePrice: null,
         price: 250
@@ -77,7 +77,7 @@ export const products: Product[] = [
         id: 9,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress9",
+        title: "Outlaw Edge Zip-Up",
         description: "",
         salePrice: null,
         price: 250
@@ -86,7 +86,7 @@ export const products: Product[] = [
         id: 10,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress10",
+        title: "Stormchaser Fleece",
         description: "",
         salePrice: null,
         price: 250
@@ -95,7 +95,7 @@ export const products: Product[] = [
         id: 11,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress11",
+        title: "Rogue Wave Hoodie",
         description: "",
         salePrice: null,
         price: 250
@@ -104,7 +104,7 @@ export const products: Product[] = [
         id: 12,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: "Dress12",
+        title: "Legacy Craft Pullover",
         description: "",
         salePrice: null,
         price: 250
@@ -113,7 +113,7 @@ export const products: Product[] = [
         id: 13,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress13`,
+        title: `Ironclad Strength Hoodie`,
         description: "",
         salePrice: null,
         price: 250
@@ -122,7 +122,7 @@ export const products: Product[] = [
         id: 14,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress14`,
+        title: `Echo Chamber Zip-Up`,
         description: "",
         salePrice: null,
         price: 250
@@ -131,7 +131,7 @@ export const products: Product[] = [
         id: 15,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress15`,
+        title: `Wanderlust Fleece Hoodie`,
         description: "",
         salePrice: null,
         price: 250
@@ -140,7 +140,7 @@ export const products: Product[] = [
         id: 16,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress16`,
+        title: `Streetwise Pulse Pullover`,
         description: "",
         salePrice: null,
         price: 250
@@ -149,7 +149,7 @@ export const products: Product[] = [
         id: 17,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress17`,
+        title: `Timberline Adventure Hoodie`,
         description: "",
         salePrice: null,
         price: 250
@@ -158,7 +158,7 @@ export const products: Product[] = [
         id: 18,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress18`,
+        title: `Asphalt Armor Sweatshirt`,
         description: "",
         salePrice: null,
         price: 250
@@ -167,7 +167,7 @@ export const products: Product[] = [
         id: 19,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress19`,
+        title: `Chill Factor Zip Hoodie`,
         description: "",
         salePrice: null,
         price: 250
@@ -176,7 +176,7 @@ export const products: Product[] = [
         id: 20,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress20`,
+        title: `Titan Blend Hoodie`,
         description: "",
         salePrice: null,
         price: 250
@@ -185,7 +185,7 @@ export const products: Product[] = [
         id: 21,
         photoUrl: "/assets/photo.png",
         category: "Men's category",
-        title: `Dress21`,
+        title: `Test Product`,
         description: "",
         salePrice: null,
         price: 250

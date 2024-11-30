@@ -2,7 +2,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 4000 4000" style="enable-background:new 0 0 4000 4000;" xml:space="preserve">
 <g>
-	<rect style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" width="4000" height="4000"/>
+	<rect style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" width="4000" height="4000" fill-opacity='0'/>
 	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M1516.653,1965.614h-350.636l-235.455-407.812h350.637L1516.653,1965.614z
 		 M1507.601,1557.803l-113.202-196.063h-226.398H817.365H590.961l113.202,196.063l235.447,407.812l113.202,196.067h226.398h350.645
 		h226.398l-113.197-196.067L1507.601,1557.803z"/>

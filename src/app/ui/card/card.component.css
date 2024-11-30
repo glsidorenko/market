@@ -1,14 +1,8 @@
 .list_item {
-    /* gap: 5px; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    align-items: center;
     padding: 30px;
-    background: #fff;
-    border: 1px solid;
-    border-color: rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .1);
     border-radius: 16px;
-    position: relative;
+    max-width: 300px;
 }
 
 .product_category {
@@ -20,10 +14,12 @@
 
 .product_title {
     margin-bottom: 8px;
+    text-wrap: wrap;
 }
 
 .product_photo {
-    height: 220px;
+    width: 100%;
+    height: auto;
     margin-bottom: 10px;
     border-radius: 4px;
 }
@@ -33,37 +29,33 @@
     color: black;
     flex-wrap: wrap;
     margin-bottom: 15px;
-    /* gap: 10px; */
 }
 
 .sale_price {
-    /* color: red; */
     font-weight: bold;
     margin-right: 10px;
 }
 
-.price {
-    /* margin-left: 10px; */
-}
-
-.underlined {
+.underline {
     text-decoration: line-through;
+    color: rgba(0, 0, 0, .4);;
 }
 
-
+.image_container {
+    position: relative;
+    /* max-width: 200px; */
+}
 
 .sale {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
     position: absolute;
     text-align: center;
-    /* top: 50px; */
-    /* left: 50%; */
-    width: 35px;
-    height: 35px;
-    top: 22px;
-    right: 23px;
+    width: 40px;
+    height: 40px;
+    right: -6px;
+    top: -10px;
     border-radius: 100%;
     background-color: rgba(248, 102, 48, 1);
 }

@@ -8,7 +8,7 @@ import { CartService } from './services/cart/cart.service';
   imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [CartService, { provide: CartService, useClass: CartService}],
+  providers: [CartService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -48,6 +48,29 @@ main {
     padding: 10px;
 }
 
+.menu a {
+    /* margin-left: 30px;
+    width: 800px;
+    outline: 2px solid red;
+    padding: 10px; */
+    text-decoration: none;
+    color: black;
+}
+
+.menu a:hover {
+    /* margin-left: 30px;
+    width: 800px;
+    outline: 2px solid red;
+    padding: 10px; */
+    text-decoration: none;
+    transition: all 200ms;
+    color: rgba(0, 0, 0, 0.459);
+}
+
+.menu a:nth-last-child(1) {
+    margin-left: 10px;
+}
+
 .div_search {
     display: flex;
     justify-content: space-around;

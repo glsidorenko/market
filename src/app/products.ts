@@ -80,7 +80,7 @@ export const products: Product[] = [
         title: "Outlaw Edge Zip-Up",
         description: "",
         salePrice: null,
-        price: 250
+        price: 251
     },
     {
         id: 10,
@@ -89,7 +89,7 @@ export const products: Product[] = [
         title: "Stormchaser Fleece",
         description: "",
         salePrice: null,
-        price: 250
+        price: 252
     },
     {
         id: 11,
@@ -98,7 +98,7 @@ export const products: Product[] = [
         title: "Rogue Wave Hoodie",
         description: "",
         salePrice: null,
-        price: 250
+        price: 253
     },
     {
         id: 12,
@@ -107,7 +107,7 @@ export const products: Product[] = [
         title: "Legacy Craft Pullover",
         description: "",
         salePrice: null,
-        price: 250
+        price: 254
     },
     {
         id: 13,
@@ -116,7 +116,7 @@ export const products: Product[] = [
         title: `Ironclad Strength Hoodie`,
         description: "",
         salePrice: null,
-        price: 250
+        price: 255
     },
     {
         id: 14,
@@ -125,7 +125,7 @@ export const products: Product[] = [
         title: `Echo Chamber Zip-Up`,
         description: "",
         salePrice: null,
-        price: 250
+        price: 256
     },
     {
         id: 15,
@@ -134,7 +134,7 @@ export const products: Product[] = [
         title: `Wanderlust Fleece Hoodie`,
         description: "",
         salePrice: null,
-        price: 250
+        price: 257
     },
     {
         id: 16,
@@ -143,7 +143,7 @@ export const products: Product[] = [
         title: `Streetwise Pulse Pullover`,
         description: "",
         salePrice: null,
-        price: 250
+        price: 258
     },
     {
         id: 17,
@@ -152,7 +152,7 @@ export const products: Product[] = [
         title: `Timberline Adventure Hoodie`,
         description: "",
         salePrice: null,
-        price: 250
+        price: 259
     },
     {
         id: 18,
@@ -160,8 +160,8 @@ export const products: Product[] = [
         category: "Men's category",
         title: `Asphalt Armor Sweatshirt`,
         description: "",
-        salePrice: null,
-        price: 250
+        salePrice: 260,
+        price: 400
     },
     {
         id: 19,
@@ -169,8 +169,8 @@ export const products: Product[] = [
         category: "Men's category",
         title: `Chill Factor Zip Hoodie`,
         description: "",
-        salePrice: null,
-        price: 250
+        salePrice: 261,
+        price: 400
     },
     {
         id: 20,
@@ -178,8 +178,8 @@ export const products: Product[] = [
         category: "Men's category",
         title: `Titan Blend Hoodie`,
         description: "",
-        salePrice: null,
-        price: 250
+        salePrice: 262,
+        price: 400
     },
     {
         id: 21,
@@ -187,8 +187,8 @@ export const products: Product[] = [
         category: "Men's category",
         title: `Test Product`,
         description: "",
-        salePrice: null,
-        price: 250
+        salePrice: 263,
+        price: 400
     }
 ]
 

@@ -1,3 +1,7 @@
+button {
+    cursor: pointer;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -6,7 +10,7 @@
 }
 
 .middle {
-    width: 1200px;
+    width: 940px;
     display: flex;
     flex-direction: column;
     /* justify-content: space-evenly; */
@@ -23,16 +27,14 @@
     border-radius: 8px;
     border: 2px solid rgba(0, 0, 0, .1);
     transition: border .3s;
+    width: calc(100% - 180px);
+
 }
 
 .search:focus {
-    border: 2px solid rgba(248, 102, 48, 1);
+    /* border: 2px solid rgba(248, 102, 48, 1); */
+    outline: 0;
 
-}
-
-.search:active {
-    /* outline: 2px solid saddlebrown; */
-    border: 2px solid rgba(248, 102, 48, 1);
 }
 
 .list {
@@ -45,18 +47,9 @@
 
 .list_items {
     gap: 20px;
-    /* width: 850px; */
     display: flex;
-    flex-wrap: wrap;
-    /* align-items: center; */
     justify-content: center;
-    /* margin-top: 80px; */
-}
-
-.filter {
-    width: 200px;
-    gap: 40px;
-    outline: 1px solid black;
+    flex-wrap: wrap;
 }
 
 .pagination {
@@ -68,28 +61,67 @@
     align-items: center;
 }
 
-.pagination_dots {
-    display: flex;
-    gap: 30px;
+.pagination_dots > button {
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    /* background-color: rgba(0,0,0,0.1); */
+    text-align: center;
+    border: 0px;
+
 }
 
-.pagination_dots input {
-    padding: 7px 10px;
-    border: 0;
-    background: red;
+.select_sort {
+    margin-left: auto;
+
+}
+
+.select_sort:focus {
+    outline: none;
+
+}
+
+.pagination_dots > button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.pagination_dots > button.active {
     color: white;
+    background-color: rgba(248, 102, 48, 1);
+    cursor: default;
 }
 
-.arrow_prev {
-    width: 20px;
+.pagination_dots > button:hover {
+
+    outline: 1px solid rgba(248, 102, 48, 1);
+
+}
+
+.arrow_prev,
+.arrow_next {
+    /* padding: 50px; */
+    /* margin: 10px; */
+    background-color: white;
+    border: 0px;
+    width: 15px;
+}
+
+
+
+.arrow_next {
     left: 20px;
 }
+
 
 .arrow_prev svg {
     transform: rotate(180deg);
 }
 
 .arrow_next {
-    width: 20px;
     right: 20px;
+}
+
+.arrow_next:disabled,
+.arrow_prev:disabled {
+    cursor: default
 }

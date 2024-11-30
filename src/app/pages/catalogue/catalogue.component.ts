@@ -2,12 +2,11 @@ import { Component, computed, Inject, PLATFORM_ID, Signal, signal, WritableSigna
 import { products } from '../../products';
 import { CardComponent } from '../../ui/card/card.component';
 import { NumberToArrayPipe } from "../../number-to-array.pipe";
-// import { PaginationComponent } from '../../ui/pagination/pagination.component';
 import { Product } from '../../types';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, Observable, of, OperatorFunction, switchMap, tap } from 'rxjs';
-// import { isPlatformBrowser } from '@angular/common';
+import { debounceTime, distinctUntilChanged, filter, OperatorFunction, tap, from, of, map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 
 @Component({
   selector: 'app-catalogue',
@@ -21,60 +20,96 @@ export class CatalogueComponent {
   products: WritableSignal<Product[]> = signal(products);
   itemsPerPage: WritableSignal<number> = signal(10);
   currentPage: WritableSignal<number> = signal(1);
-  totalCount: Signal<number> = computed(() => this.products.length);
-  searchStatus: WritableSignal<string | undefined> = signal('')
-  public searchProduct  = new FormControl<string>("");
+  totalCount: Signal<number> = computed(() => {
+    if(this.searchedItems().length > 0) {
+      console.log("есть")
+      return this.searchedItems().length;
+    }
+
+    return this.products().length;
+  })
+  isProductFound: WritableSignal<boolean> = signal(true)
   searchedItems: WritableSignal<Product[]> = signal([]);
 
-  
+  visibleItems: Signal<Product[] | undefined> = computed(() => {
+    const items = this.products();
+    const perPage = this.itemsPerPage();
+    const page = this.currentPage();
+    const isProductFound = this.isProductFound();
+    const searched = this.searchedItems();
+
+
+    function modifyArray(array: Product[]) {
+      return array.slice((page - 1) * perPage, perPage * page);
+    }
+
+    if (!isProductFound) {
+      return undefined;
+    }
+    while (searched.length === 0) {
+      return modifyArray(items);
+    }
+    return modifyArray(searched);
+
+    
+  })
+
+  searchProduct$  = new FormControl<string>("");
+  selectedValue$ = new FormControl<string>("");
+  sort: string = ''
+
 
   constructor(@Inject(PLATFORM_ID) public platformId: string) {
-    this.searchProduct.valueChanges.pipe(
+    this.searchProduct$.valueChanges.pipe(
         filterNilValue(),
         debounceTime(300),
         distinctUntilChanged(),
         tap(search => {
-          this.searchStatus.set('');
-          this.searchedItems.set(this.products().filter(item => item.title.toLowerCase().includes(search)))
+          this.isProductFound.set(true); // чтобы не ломался при изменении текста поиска
+          this.searchedItems.set(this.products().filter(item => item.title.toLowerCase().includes(search.toLowerCase())))
         }),
         tap(search => {
-          if (search && !this.searchedItems().length) {
-            this.searchStatus.set(undefined);
-          }
           if (!search) {
-            console.log("show visibleItemsArray")
             this.searchedItems.set([]);
           } 
+          if (search && !this.searchedItems().length) { //если не нашло
+            this.isProductFound.set(false);
+          }
         }),
         takeUntilDestroyed(),
-    ).subscribe()
+    ).subscribe();
+
+    this.selectedValue$.valueChanges.pipe(
+      filterNilValue(),
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap((value) => {
+        switch(value) {
+          case 'sale' : {
+            return this.products.set(this.products().filter((value) => value.salePrice))
+          }
+          case 'sortAsc' : {
+            return this.products.set([...this.products()].sort((a, b) => a.price - b.price))
+          }
+          case 'sortDecs' : {
+            return this.products.set([...this.products()].sort((a, b) => b.price - a.price))
+          }
+        }
+      }),
+      takeUntilDestroyed()
+    ).subscribe(console.log)
 
     effect(() => console.log(`Visible`, this.visibleItems()));
     effect(() => console.log(`Searched`, this.searchedItems()));
-  }
+    effect(() => console.log(`length`, this.totalCount()));
 
-  visibleItems: Signal<Product[]> = computed(() => {
-    const items = this.products();
-    const perPage = this.itemsPerPage();
-    const page = this.currentPage();
-    return items.slice((page - 1) * perPage, perPage * page);
-  })
-
-  itemsToShow() {
-    if (this.searchStatus() === undefined) {
-      return undefined;
-    }
-    while (this.searchedItems().length === 0) {
-      return this.visibleItems();
-    }
-    return this.searchedItems();
   }
 
 
   pageCount: Signal<number> = computed(() => {
-    const items = this.products();
     const count = this.itemsPerPage();
-    return Math.ceil(items.length / count);
+    const total = this.totalCount();
+    return Math.ceil(total / count);
   })
 
   nextPage(): void {
@@ -110,7 +145,6 @@ export class CatalogueComponent {
   updateCurrentPage(page: number): void {
     this.currentPage.set(page);
   }
-
 }
 
 export function filterNilValue<T>(): OperatorFunction<T, NonNullable<T>> {

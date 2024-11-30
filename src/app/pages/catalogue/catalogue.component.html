@@ -2,15 +2,21 @@
 <section class="container">
     <div class="middle">
         <div class="div_search">
-            <input type="text" placeholder="Поиск" class="search" [formControl]="searchProduct">
-            <div class="filter">7</div>
+            <input type="text" placeholder="Поиск" class="search" [formControl]="searchProduct$">
+                    <select [formControl]="selectedValue$" class="select_sort">
+                        <option value="default" disabled>Сортировка</option>
+                        <option value="sortAsc">По возрастанию цены</option>
+                        <option value="sortDecs">По убыванию цены</option>
+                        <option value="sale">Акционные</option>
+                    </select>
         </div>
+        <input type="text" placeholder="Здесь можно задать кол-во отображаемых карточек товара">
         <div class="list_items">
-            @for(product of itemsToShow(); track product.id) {
+            @for(product of visibleItems(); track product.id) {
                 <app-card [card]="product"></app-card>
             }
             @empty {
-                <div>nothing!</div>
+                <div>По вашему запросу ничего не найдено!</div>
             }
         </div>
     </div>
@@ -21,9 +27,9 @@
             </svg>
         </button>
         <div class="pagination_dots">
-            @if(pageCount() > 2) {
+            @if(pageCount() >= 2) {
                 @for(page of pageCount() | numberToArray; track page) {
-                    <button (click)="updateCurrentPage(page)">{{page}}</button>
+                    <button (click)="updateCurrentPage(page)" #button  [class.active]="page === currentPage()">{{page}}</button>
                 }
             }
         </div>
@@ -33,6 +39,5 @@
             </svg>
         </button>
     </div>
-
-    <!-- <app-pagination/> -->
 </section>
+

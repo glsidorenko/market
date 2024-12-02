@@ -10,7 +10,7 @@
                         <option value="sale">Акционные</option>
                     </select>
         </div>
-        <input type="text" placeholder="Здесь можно задать кол-во отображаемых карточек товара">
+        <input type="number" placeholder="Кол-во карточек" class="perPage" [formControl]="productsPerPage$" min="5" max="15">
         <div class="list_items">
             @for(product of visibleItems(); track product.id) {
                 <app-card [card]="product"></app-card>

@@ -13,8 +13,12 @@ button {
     width: 940px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
     padding-top: 60px;
+}
+
+.perPage {
+    align-self: flex-start;
+    margin-bottom: 10px;
 }
 
 .div_search {

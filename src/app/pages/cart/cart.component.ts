@@ -16,7 +16,6 @@ export class CartComponent {
   cartTotalPrice = this.cartService.getTotalCartPrice(); 
 
   addItem(cartItem: CartItem): void {
-    // console.log(cartItem);
     this.cartService.addItemToCart(cartItem)
   }
 

@@ -1,0 +1,39 @@
+   .container {
+        width: 100%;
+    /* height: auto; */
+        display: flex;
+        justify-content: center;
+        /* flex-direction: column; */
+   }
+   
+   .cart-container {
+        max-width: 1200px;
+        width: 100%;
+        /* margin: auto; */
+        /* background-color: aqua; */
+    }
+
+   
+
+    button {
+        padding: 5px 10px;
+    }
+
+    .cart {
+        display: flex;
+    }
+
+    .about {
+        margin-left: 20px;
+    }
+
+    .image img {
+        width: 120px
+    }
+
+    .btns {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }

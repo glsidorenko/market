@@ -8,13 +8,12 @@ main {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: rgb(82, 82, 82);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .div_auth {
     display: flex;
     justify-content: end;
-    background-color: rgb(148, 148, 148);
 }
 
 .inner {
@@ -34,7 +33,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(194, 194, 194);
+    margin-bottom: 20px;
 }
 
 .nav_logo {
@@ -44,24 +43,17 @@ main {
 .menu {
     margin-left: 30px;
     width: 800px;
-    outline: 2px solid red;
+    font-size: 24px;
     padding: 10px;
+    font-family: "Oswald", sans-serif;
 }
 
 .menu a {
-    /* margin-left: 30px;
-    width: 800px;
-    outline: 2px solid red;
-    padding: 10px; */
     text-decoration: none;
     color: black;
 }
 
 .menu a:hover {
-    /* margin-left: 30px;
-    width: 800px;
-    outline: 2px solid red;
-    padding: 10px; */
     text-decoration: none;
     transition: all 200ms;
     color: rgba(0, 0, 0, 0.459);
@@ -98,6 +90,8 @@ main {
 
 .outer-container {
     flex: 1 0 auto;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .footer {
@@ -106,7 +100,7 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(220, 252, 252);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .footer_info {
@@ -126,6 +120,6 @@ main {
 .footer_tagname {
     margin-top: 20px;
     padding: 10px;
-    background-color: azure;
+    /* background-color: rgba(0, 0, 0, 0.1); */
 }
 

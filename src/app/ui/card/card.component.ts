@@ -17,6 +17,5 @@ export class CardComponent {
 
   addProduct(product: Product): void {
     this.cartService.addItemToCart(product);
-    // this.cartService.updateCartTotalPrice(product.price);
   }
 }

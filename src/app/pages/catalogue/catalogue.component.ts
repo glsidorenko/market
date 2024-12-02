@@ -8,7 +8,6 @@ import { debounceTime, distinctUntilChanged, filter, OperatorFunction, tap } fro
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CartService } from '../../services/cart/cart.service';
 
-
 @Component({
   selector: 'app-catalogue',
   standalone: true,
@@ -18,18 +17,22 @@ import { CartService } from '../../services/cart/cart.service';
 })
 
 export class CatalogueComponent {
+  cartService = inject(CartService);
   products: WritableSignal<Product[]> = signal(products);
   itemsPerPage: WritableSignal<number> = signal(10);
   currentPage: WritableSignal<number> = signal(1);
-  cartService = inject(CartService);
-
-  totalCount: Signal<number> = computed(() => {
-    return this.searchedItems().length > 0 ? this.searchedItems().length : this.products().length;
-  })
   isProductFound: WritableSignal<boolean> = signal(false);
   isSearched: WritableSignal<boolean> = signal(false);
   isSorted: WritableSignal<boolean> = signal(false);
   searchedItems: WritableSignal<Product[]> = signal([]);
+
+  searchProduct$  = new FormControl<string>('');
+  selectedValue$ = new FormControl<string>({value: '', disabled: false}, Validators.required);
+  productsPerPage$ = new FormControl<number>(10);
+
+  totalCount: Signal<number> = computed(() => {
+    return this.searchedItems().length > 0 ? this.searchedItems().length : this.products().length;
+  })
 
   visibleItems: Signal<Product[] | undefined> = computed(() => {
     const items = this.products();
@@ -54,11 +57,7 @@ export class CatalogueComponent {
     return transformArray(items);
   })
 
-  searchProduct$  = new FormControl<string>('');
-  selectedValue$ = new FormControl<string>({value: '', disabled: false}, Validators.required);
-  productsPerPage$ = new FormControl<number>(10);
-
-  chooseItemsArray() {
+  itemsArrayToShow() {
     return this.isSearched() ? this.searchedItems() : this.products();
   }
 
@@ -74,12 +73,12 @@ export class CatalogueComponent {
           this.searchedItems.set(this.products().filter(item => item.title.toLowerCase().includes(search.toLowerCase())))
         }),
         tap(search => {
-          if (!search) { //пустой поиск
+          if (!search) { // пустой поиск
             this.isSearched.set(false);
             this.searchedItems.set([]);
             this.isProductFound.set(false);
           } 
-          if (search && !this.searchedItems().length) { //если не нашло
+          if (search && !this.searchedItems().length) { // если не нашло
             this.isProductFound.set(false);
             this.selectedValue$.disable();
           }
@@ -94,26 +93,25 @@ export class CatalogueComponent {
       tap((value) => {
         this.isSorted.set(true);
         switch(value) {
-          // case 'sale' : {
-          //   return this.searchedItems.set((this.products() as Product[]).filter((value) => value.salePrice))
-          // }
+          case 'sale' : {
+            return this.searchedItems.set((this.itemsArrayToShow() as Product[]).filter((value) => value.salePrice))
+          }
           case 'sortAsc' : {
-            return this.searchedItems.set([...(this.chooseItemsArray() as Product[])].sort((a, b) => {
+            return this.searchedItems.set([...(this.itemsArrayToShow() as Product[])].sort((a, b) => {
               const firstPrice = Object.hasOwn(a, 'salePrice') && a.salePrice !== null ? a.salePrice : a.price 
               const secondPrice = Object.hasOwn(b, 'salePrice') && b.salePrice !== null ? b.salePrice : b.price 
-              // debugger
-              return (firstPrice as number) - (secondPrice as number)
+              return (firstPrice as number) - (secondPrice as number);
             }))
           }
           case 'sortDecs' : {
-            return this.searchedItems.set([...(this.chooseItemsArray() as Product[])].sort((a, b) => {
+            return this.searchedItems.set([...(this.itemsArrayToShow() as Product[])].sort((a, b) => {
               const firstPrice = Object.hasOwn(a, 'salePrice') && a.salePrice !== null ? a.salePrice : a.price 
               const secondPrice = Object.hasOwn(b, 'salePrice') && b.salePrice !== null ? b.salePrice : b.price
-              
-              return (secondPrice as number) - (firstPrice as number)}))
+              return (secondPrice as number) - (firstPrice as number)
+            }))
           }
-          }
-        }),
+        }
+      }),
       takeUntilDestroyed()
     ).subscribe()
 
@@ -133,7 +131,6 @@ export class CatalogueComponent {
       isSorted: this.isSorted()
     }));
   }
-
 
   pageCount: Signal<number> = computed(() => {
     const count = this.itemsPerPage();

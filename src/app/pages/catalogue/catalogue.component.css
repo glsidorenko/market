@@ -32,13 +32,10 @@ button {
     border: 2px solid rgba(0, 0, 0, .1);
     transition: border .3s;
     width: calc(100% - 180px);
-
 }
 
 .search:focus {
-    /* border: 2px solid rgba(248, 102, 48, 1); */
     outline: 0;
-
 }
 
 .list {
@@ -69,20 +66,16 @@ button {
     border-radius: 100%;
     width: 35px;
     height: 35px;
-    /* background-color: rgba(0,0,0,0.1); */
     text-align: center;
     border: 0px;
-
 }
 
 .select_sort {
     margin-left: auto;
-
 }
 
 .select_sort:focus {
     outline: none;
-
 }
 
 .pagination_dots > button:not(:first-child) {
@@ -96,15 +89,11 @@ button {
 }
 
 .pagination_dots > button:hover {
-
     outline: 1px solid rgba(248, 102, 48, 1);
-
 }
 
 .arrow_prev,
 .arrow_next {
-    /* padding: 50px; */
-    /* margin: 10px; */
     background-color: white;
     border: 0px;
     width: 15px;

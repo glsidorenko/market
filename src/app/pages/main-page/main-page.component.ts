@@ -1,14 +1,14 @@
 import { Component, computed, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { CardComponent } from '../../ui/card/card.component';
 import { products} from '../../products';
-
 import { CartService } from '../../services/cart/cart.service';
 import { Product } from '../../types';
+import { SliderComponent } from '../../ui/slider/slider.component';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, SliderComponent],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
@@ -25,9 +25,7 @@ export class MainPageComponent {
     const count = this.itemsPerPage();
     const page = this.currentPage();
 
-    return items.slice( (page - 1) * count, count) 
+    return items.slice( (page - 1) * count, count);
   })
-
-
 }
 

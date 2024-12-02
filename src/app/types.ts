@@ -11,3 +11,9 @@ export type Product = {
 export type CartItem = Product & {
     count: number;
 }
+
+export type SlideItem = {
+    id: number;
+    url: string;
+    title: string;
+}

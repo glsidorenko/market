@@ -1,39 +1,46 @@
-   .container {
-        width: 100%;
-    /* height: auto; */
-        display: flex;
-        justify-content: center;
-        /* flex-direction: column; */
-   }
-   
-   .cart-container {
-        max-width: 1200px;
-        width: 100%;
-        /* margin: auto; */
-        /* background-color: aqua; */
-    }
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
-   
+.cart-container {
+    max-width: 1200px;
+    width: 100%;
+}
 
-    button {
-        padding: 5px 10px;
-    }
 
-    .cart {
-        display: flex;
-    }
 
-    .about {
-        margin-left: 20px;
-    }
+button {
+    padding: 5px 10px;
+}
 
-    .image img {
-        width: 120px
-    }
+.cart {
+    display: flex;
+}
 
-    .btns {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-    }
+.about {
+    margin-left: 20px;
+}
+
+.image img {
+    width: 120px
+}
+
+.btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete {
+    border: none;
+    background-size: 100% 100%;
+    background-image: url("../../../assets/delete-cross.svg");
+    background-color: white;
+    cursor: pointer;
+    width: 20px;
+    height: auto;
+    margin-left: auto;
+}

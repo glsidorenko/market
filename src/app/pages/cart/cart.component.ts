@@ -2,7 +2,6 @@ import { Component, inject, Signal } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../types';
 
-
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -20,9 +19,13 @@ export class CartComponent {
   }
 
   deleteItem(cartItem: CartItem): void {
-    if(cartItem.count === 1) {
+    if (cartItem.count === 1) {
       this.cartService.deleteItemFromCart(cartItem);
     } 
     this.cartService.decreaseCartItemQuantity(cartItem);
+  }
+
+  deleteItemFromCart(cartItem: CartItem): void {
+    this.cartService.deleteItemFromCart(cartItem);
   }
 }

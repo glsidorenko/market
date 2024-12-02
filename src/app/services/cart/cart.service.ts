@@ -5,12 +5,8 @@ import { CartItem, Product } from '../../types';
   providedIn: 'root'
 })
 export class CartService {
-  private readonly cartCounter: WritableSignal<number> = signal(0);
   private readonly cart: WritableSignal<CartItem[]> = signal([]);
-  private readonly cartTotalPrice: WritableSignal<number> = signal(0);
-
-  // public logCart: EffectRef = effect(() => console.log("counter", this.cartCounter()));
-  // public logCart1: EffectRef = effect(() => console.log("cart", this.cart()));
+  private readonly totalCartPrice = computed(() => this.calcTotalCartPrice());
 
   private isItemExists(product: Product): boolean {
     return this.cart().some(item => item.id === product.id);
@@ -31,17 +27,6 @@ export class CartService {
     this.cart.update((cart) => [...cart, {...product, count: 1}]);
   }
 
-  decreaseCartItemQuantity(product: CartItem): void {
-    this.cart.update((cart) => {
-      return cart.map((item) => {
-        if (item.id === product.id) {
-          return { ...item, count: item.count - 1 }
-        }
-        return item;
-      });
-    });
-  }
-
   deleteItemFromCart(product: CartItem): void {
     this.cart.update((cart) => {
       return cart.filter((item) => {
@@ -51,6 +36,17 @@ export class CartService {
         return item;
       });
     })
+  }
+
+  decreaseCartItemQuantity(product: CartItem): void {
+    this.cart.update((cart) => {
+      return cart.map((item) => {
+        if (item.id === product.id) {
+          return { ...item, count: item.count - 1 }
+        }
+        return item;
+      });
+    });
   }
 
   getCart(): Signal<CartItem[]> {
@@ -63,14 +59,8 @@ export class CartService {
     }, 0)
   }
 
-  clearCart() {
-    this.cart.update(() => []);
-
-    this.cartCounter.set(0);
-  }
-
   getTotalCartPrice() {
-    return computed(() => this.calcTotalCartPrice());
+    return this.totalCartPrice;
   } 
 
   calcTotalCartQuantity() {
@@ -82,9 +72,4 @@ export class CartService {
   getCartCounter() {
     return computed(() => this.calcTotalCartQuantity());
   }
-
-  updateCartTotalPrice(totalPrice: number): void {
-    this.cartTotalPrice.set(totalPrice);
-  }
-
 }

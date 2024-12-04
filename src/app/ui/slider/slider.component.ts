@@ -21,7 +21,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.resetTimer();
+    // this.resetTimer();
   }
   
   ngOnDestroy() {
@@ -69,7 +69,7 @@ export class SliderComponent implements OnInit, OnDestroy {
       return 
     }
 
-    this.resetTimer();
+    // this.resetTimer();
     this.currentSlideIndex.update((value) => value + 1);
   }
 
@@ -80,7 +80,7 @@ export class SliderComponent implements OnInit, OnDestroy {
       return
     }
 
-    this.resetTimer();
+    // this.resetTimer();
     this.currentSlideIndex.update(value => value - 1);
   }
 

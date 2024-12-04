@@ -3,14 +3,18 @@
     <div class="middle">
         <div class="div_search">
             <input type="text" placeholder="Поиск" class="search" [formControl]="searchProduct$">
-                    <select [formControl]="selectedValue$" class="select_sort">
-                        <option value="default" disabled>Сортировка</option>
+                    <select [formControl]="selectedValue$" class="select_sort" >
+                        <option value="default" disabled selected>Сортировка</option>
                         <option value="sortAsc">По возрастанию цены</option>
                         <option value="sortDecs">По убыванию цены</option>
                         <option value="sale">Акционные</option>
                     </select>
         </div>
-        <input type="number" placeholder="Кол-во карточек" class="perPage" [formControl]="productsPerPage$" min="5" max="15">
+        <select class="perPage" [formControl]="productsPerPage$">
+            <option value=10 default>10 карточек</option>
+            <option value=25>25 карточек</option>
+        </select>
+
         <div class="list_items">
             @for(product of visibleItems(); track product.id) {
                 <app-card [card]="product"></app-card>

@@ -1,4 +1,4 @@
-import { Component, computed, OnDestroy, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, NgZone, OnDestroy, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { SlideItem } from '../../types';
 import { CommonModule } from '@angular/common';
 import { sliderInfo } from '../../sliderInfo';
@@ -11,6 +11,9 @@ import { sliderInfo } from '../../sliderInfo';
   styleUrl: './slider.component.css'
 })
 export class SliderComponent implements OnInit, OnDestroy {
+  private zone = inject(NgZone);
+
+  
   slides: Signal<SlideItem[]> = signal(sliderInfo);
   currentSlideIndex: WritableSignal<number> = signal(0);
   totalSlides = computed(() => {
@@ -21,7 +24,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    // this.resetTimer();
+    this.resetTimer();
   }
   
   ngOnDestroy() {
@@ -39,13 +42,16 @@ export class SliderComponent implements OnInit, OnDestroy {
       clearTimeout(this.timeoutId);
     }
 
-    this.timeoutId = setTimeout(() => {
-      console.log('timeout')
-      this.nextSlide();
-    }, 5000);
+    this.zone.runOutsideAngular(() => {
+      this.timeoutId = setTimeout(() => {
+        console.log('timeout')
+        this.nextSlide();
+      }, 1000);
+    })
   }
 
   getSlideUrl() {
+    console.log('dsadsad')
     return `url('${this.slides()[this.currentSlideIndex()].url}')`;
   }
 

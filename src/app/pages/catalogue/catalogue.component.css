@@ -18,16 +18,21 @@ button {
 
 .perPage {
     align-self: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 10px 5px;
+}
+
+.perPage:focus {
+    outline: none;
 }
 
 .div_search {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .search {
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 8px;
     border: 2px solid rgba(0, 0, 0, .1);
     transition: border .3s;
@@ -72,6 +77,7 @@ button {
 
 .select_sort {
     margin-left: auto;
+    /* padding: 10px; */
 }
 
 .select_sort:focus {
@@ -98,8 +104,6 @@ button {
     border: 0px;
     width: 15px;
 }
-
-
 
 .arrow_next {
     left: 20px;

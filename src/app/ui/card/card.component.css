@@ -66,6 +66,26 @@
     fill: white;
 }
 
+.favourite {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: absolute;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    right: -6px;
+    top: 50px;
+    border-radius: 100%;
+    background-color: rgba(248, 102, 48, 1);
+}
+
+/* .favourite svg {
+    width: 25px;
+    height: 25px;
+    fill: white;
+} */
+
 .add_btn {
     border: 1px solid rgba(248,102, 48, 1);
     background-color: rgba(255, 255, 255, 1);

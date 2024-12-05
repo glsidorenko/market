@@ -5,10 +5,14 @@
 }
 
 .cart-container {
-    max-width: 1200px;
-    width: 100%;
+    margin-top: 20px;
+    max-width: 1000px;
+    width: 600px;
+    min-width: 600px;
+    padding: 20px;
+    border: 1px solid black;
+    /* border-radius: 20px; */
 }
-
 
 
 button {
@@ -16,22 +20,39 @@ button {
 }
 
 .cart {
+    padding: 10px;
+    border-radius: 20px;
     display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* max-height: 300px; */
+    /* height: 140px; */
 }
+
+.cart + * {
+    margin-top: 10px;
+} 
+    
 
 .about {
     margin-left: 20px;
+    height: 100%;
 }
 
 .image img {
-    width: 120px
+    width: 80px;
+    height: auto; 
+}
+
+.total_price {
+    margin-top: 10px;
 }
 
 .btns {
     display: flex;
     gap: 20px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    align-items: flex-start;
 }
 
 .delete {
@@ -40,7 +61,18 @@ button {
     background-image: url("../../../assets/delete-cross.svg");
     background-color: white;
     cursor: pointer;
-    width: 20px;
-    height: auto;
+    width: 25px;
+    height: 25px;
     margin-left: auto;
+    align-self: flex-start;
+}
+
+.price {
+    margin-left: auto;
+    /* margin-right: 20px; */
+}
+
+.description {
+    border: 1px solid black;
+    height: auto;
 }

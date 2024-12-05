@@ -4,7 +4,7 @@ import { CardComponent } from '../../ui/card/card.component';
 import { NumberToArrayPipe } from "../../number-to-array.pipe";
 import { Product } from '../../types';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CartService } from '../../services/cart/cart.service';
 import { coerceProductPrice, filterNilValue } from '../../core-operators/operators';
@@ -25,8 +25,10 @@ export class CatalogueComponent {
   isSearched: WritableSignal<boolean> = signal(false);
   searchedItems: WritableSignal<Product[]> = signal([]);
   searchProduct$  = new FormControl<string>('');
-  selectedValue$ = new FormControl<string>({value: 'default', disabled: false}, Validators.required); // сделать enable effect sortingstagechangeeffect
+  selectedValue$ = new FormControl<string>({value: 'default', disabled: false}, Validators.required); // сделать enable effect sortingStageChangeEffect
   productsPerPage$ = new FormControl<number>(10);
+
+  srx = combineLatest([this.searchProduct$.valueChanges, this.selectedValue$.valueChanges]).subscribe(console.log)
 
   totalCount: Signal<number> = computed(() => {
     return this.searchedItems().length > 0 ? this.searchedItems().length : this.products().length;
@@ -60,17 +62,21 @@ export class CatalogueComponent {
         debounceTime(300),
         distinctUntilChanged(),
         tap(search => {
+
+          const arr = this.searchedItems().length > 0 ? this.searchedItems() : this.products();
+          const x  = this.products();
+
           this.selectedValue$.enable();
           this.isSearched.set(true);
-          this.searchedItems.set(this.products().filter(item => item.title.toLowerCase().includes(search.toLowerCase())))
+          this.searchedItems.set(x.filter(item => item.title.toLowerCase().includes(search.toLowerCase())))
 
           if (!search) { // пустой поиск
             this.isSearched.set(false);
             this.searchedItems.set([]);
           } 
-          if (search && !this.searchedItems().length) { // если не нашло
-            this.selectedValue$.disable();
-          }
+          // if (search && !this.searchedItems().length) { // если не нашло
+          //   this.selectedValue$.disable();
+          // }
         }),
         takeUntilDestroyed(),
     ).subscribe();
@@ -87,18 +93,10 @@ export class CatalogueComponent {
             return this.searchedItems.set(arr.filter((value) => value.salePrice))
           }
           case 'sortAsc' : {
-            return this.searchedItems.set([...arr].sort((a, b) => {
-              const firstPrice = coerceProductPrice(a)
-              const secondPrice = coerceProductPrice(b)
-              return firstPrice - secondPrice;
-            }))
+            return this.searchedItems.set([...arr].sort((a, b) => coerceProductPrice(a) - coerceProductPrice(b)))
           }
           case 'sortDecs' : {
-            return this.searchedItems.set([...arr].sort((a, b) => {
-              const firstPrice = coerceProductPrice(a)
-              const secondPrice = coerceProductPrice(b)
-              return secondPrice - firstPrice
-            }))
+            return this.searchedItems.set([...arr].sort((a, b) => coerceProductPrice(b) - coerceProductPrice(a)))
           }
         }
       }),
@@ -113,11 +111,11 @@ export class CatalogueComponent {
       takeUntilDestroyed()
     ).subscribe()
 
-    effect(() => console.log({
-      visibleItems: this.visibleItems(),
-      searchedItems: this.searchedItems(),
-      isSearched: this.isSearched(),
-    }));
+    // effect(() => console.log({
+    //   visibleItems: this.visibleItems(),
+    //   searchedItems: this.searchedItems(),
+    //   isSearched: this.isSearched(),
+    // }));
   }
 
   pageCount: Signal<number> = computed(() => {

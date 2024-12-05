@@ -1,0 +1,31 @@
+<div class="list_items">
+  @for (item of visibleItems(); track item.id) {
+    <ng-template [ngTemplateOutlet]="itemTemplate() ?? defaultTemplate"
+                 [ngTemplateOutletContext]="{item: item}"></ng-template>
+  } @empty {
+    <div>По вашему запросу ничего не найдено!</div>
+  }
+</div>
+<div class="pagination">
+  <button class="arrow_prev" [disabled]="isFirstPage()" (click)="previousPage()">
+    <svg viewBox="0 0 5 9">
+      <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z"/>
+    </svg>
+  </button>
+  <div class="pagination_dots">
+    @if (pageCount() >= 2) {
+      @for (page of pageCount() | numberToArray; track page) {
+        <button (click)="updateCurrentPage(page)" [class.active]="page === currentPage()">{{ page }}</button>
+      }
+    }
+  </div>
+  <button class="arrow_next" [disabled]="isLastPage()" (click)="nextPage()">
+    <svg viewBox="0 0 5 9">
+      <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z"/>
+    </svg>
+  </button>
+</div>
+
+<ng-template #defaultTemplate let-item=item>
+  {{item | json}}
+</ng-template>

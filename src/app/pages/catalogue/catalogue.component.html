@@ -2,46 +2,25 @@
 <section class="container">
     <div class="middle">
         <div class="div_search">
-            <input type="text" placeholder="Поиск" class="search" [formControl]="searchProduct$">
-                    <select [formControl]="selectedValue$" class="select_sort" >
+            <input type="text" placeholder="Поиск" class="search" [formControl]="searchProduct">
+                    <select [formControl]="selectedValue" class="select_sort">
                         <option value="default" disabled selected>Сортировка</option>
                         <option value="sortAsc">По возрастанию цены</option>
                         <option value="sortDecs">По убыванию цены</option>
                         <option value="sale">Акционные</option>
                     </select>
         </div>
-        <select class="perPage" [formControl]="productsPerPage$">
+        <select class="perPage" [formControl]="productsPerPage">
             <option value=10 default>10 карточек</option>
             <option value=25>25 карточек</option>
         </select>
 
-        <div class="list_items">
-            @for(product of visibleItems(); track product.id) {
-                <app-card [card]="product"></app-card>
-            }
-            @empty {
-                <div>По вашему запросу ничего не найдено!</div>
-            }
-        </div>
+       <app-pagination [items]="searchedItems()" [itemsPerPage]="productsPerPage.value" [itemTemplate]="productItemTemplate">
+       </app-pagination>
     </div>
-    <div class="pagination">
-        <button class="arrow_prev" [disabled]="isFirstPage()" (click)="previousPage()">
-            <svg viewBox="0 0 5 9">
-                <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z" />
-            </svg>
-        </button>
-        <div class="pagination_dots">
-            @if(pageCount() >= 2) {
-                @for(page of pageCount() | numberToArray; track page) {
-                    <button (click)="updateCurrentPage(page)" #button  [class.active]="page === currentPage()">{{page}}</button>
-                }
-            }
-        </div>
-        <button class="arrow_next" [disabled]="isLastPage()" (click)="nextPage()">
-            <svg viewBox="0 0 5 9">
-                <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z" />
-            </svg>
-        </button>
-    </div>
+
 </section>
 
+<ng-template #productItemTemplate let-item=item>
+  <app-card [card]="item"></app-card>
+</ng-template>
